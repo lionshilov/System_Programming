@@ -1,7 +1,7 @@
 FROM ubuntu
-RUN apt-get -y update
-RUN apt-get -y install imagemagick
-COPY ./convert_resize.sh /home/script.sh
-COPY ./image1.png /home/input/image1.png
-COPY ./image1.png /home/output/image1.png
-ENTRYPOINT /bin/bash
+RUN apt-get update && apt-get install g++ -y
+RUN apt-get install g++-multilib -y
+COPY ./Combine.cpp /home/Combine.cpp
+COPY ./run.sh /home/run.sh
+WORKDIR /home
+ENTRYPOINT ["sh","./run.sh"]
